@@ -26,7 +26,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       }
       let value =
         (input[0] === " " && input[1] !== " ") ||
-          (input[0] === " " && input[1] !== undefined)
+        (input[0] === " " && input[1] !== undefined)
           ? " " + input.trim()
           : input.trim();
       if (value === " ") {
@@ -37,7 +37,6 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       }
 
       if (searchValue.value === value && searchValue.region === region) {
-        
         return;
       }
       let placeInCache;
@@ -54,17 +53,14 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       let firstLetter = value[0];
       const regex = new RegExp(value, "i");
       if (cache[firstLetter] && value.length === 1 && region !== "") {
-        
         let filteredCache = cache[firstLetter].filter((obj) => {
           return obj.region.search(region) !== -1;
         });
         setData(filteredCache);
       } else if (cache[firstLetter] && value.length === 1) {
-        
         setData(cache[firstLetter]);
         setStateOfData(firstLetter);
       } else if (region && cache[region]) {
-        
         if (value !== "") {
           let filteredCache = cache[region].filter((obj) => {
             if (obj.name.common.search(regex) !== -1) {
@@ -83,7 +79,6 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         }
         setStateOfData(region);
       } else if (stateOfData === "initialData") {
-        
         if (region !== "") {
           let res = await fetch(
             `https://restcountries.com/v3.1/region/${region}`
@@ -106,7 +101,6 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
           }
         }
       } else if (value === "" && region) {
-        
         let res = await fetch(
           `https://restcountries.com/v3.1/region/${region}`
         );
@@ -115,10 +109,8 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         cache[region] = res;
         setStateOfData(region);
       } else if (value === "") {
-        
         setStateOfData("initialData");
       } else if (cache[firstLetter]) {
-        
         let filteredData = cache[firstLetter].filter((obj) => {
           for (let i = 0; i < obj.altSpellings.length; i++) {
             if (obj.altSpellings[i].search(regex) !== -1) {
@@ -129,9 +121,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         });
         setData(filteredData);
       } else {
-        
         if (checkIfExists(value)) {
-          
           let filteredData = cache[placeInCache].filter((obj) => {
             for (let i = 0; i < obj.altSpellings.length; i++) {
               if (obj.altSpellings[i].search(regex) !== -1) {
@@ -142,7 +132,6 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
           });
           setData(filteredData);
         } else {
-          
           let res = await fetch(`https://restcountries.com/v3.1/name/${value}`);
           res = await res.json();
           setData(res);
@@ -153,7 +142,15 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       setSearchValue({ value: value, region: region });
     }
     handleInputChange();
-  }, [input, region, searchValue.region, searchValue.value, setData, setStateOfData, stateOfData]);
+  }, [
+    input,
+    region,
+    searchValue.region,
+    searchValue.value,
+    setData,
+    setStateOfData,
+    stateOfData,
+  ]);
   const handleKeyDown = (index) => (e) => {
     switch (e.key) {
       case " ":
