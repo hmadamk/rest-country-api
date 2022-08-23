@@ -37,7 +37,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       }
 
       if (searchValue.value === value && searchValue.region === region) {
-        console.log("optmized");
+        
         return;
       }
       let placeInCache;
@@ -54,17 +54,17 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       let firstLetter = value[0];
       const regex = new RegExp(value, "i");
       if (cache[firstLetter] && value.length === 1 && region !== "") {
-        console.log("the letter saved in cache there is a region");
+        
         let filteredCache = cache[firstLetter].filter((obj) => {
           return obj.region.search(region) !== -1;
         });
         setData(filteredCache);
       } else if (cache[firstLetter] && value.length === 1) {
-        console.log("getting the one letter in the cache");
+        
         setData(cache[firstLetter]);
         setStateOfData(firstLetter);
       } else if (region && cache[region]) {
-        console.log("Getting region from cache");
+        
         if (value !== "") {
           let filteredCache = cache[region].filter((obj) => {
             if (obj.name.common.search(regex) !== -1) {
@@ -83,7 +83,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         }
         setStateOfData(region);
       } else if (stateOfData === "initialData") {
-        console.log("moving from initial state");
+        
         if (region !== "") {
           let res = await fetch(
             `https://restcountries.com/v3.1/region/${region}`
@@ -106,7 +106,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
           }
         }
       } else if (value === "" && region) {
-        console.log("no value asking for a region that does not exist");
+        
         let res = await fetch(
           `https://restcountries.com/v3.1/region/${region}`
         );
@@ -115,12 +115,10 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         cache[region] = res;
         setStateOfData(region);
       } else if (value === "") {
-        console.log("back to initail state");
+        
         setStateOfData("initialData");
       } else if (cache[firstLetter]) {
-        console.log(
-          "getting the specific country that does exists on the letter cahce"
-        );
+        
         let filteredData = cache[firstLetter].filter((obj) => {
           for (let i = 0; i < obj.altSpellings.length; i++) {
             if (obj.altSpellings[i].search(regex) !== -1) {
@@ -131,9 +129,9 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
         });
         setData(filteredData);
       } else {
-        console.log("some case chekcing for cache");
+        
         if (checkIfExists(value)) {
-          console.log("exists");
+          
           let filteredData = cache[placeInCache].filter((obj) => {
             for (let i = 0; i < obj.altSpellings.length; i++) {
               if (obj.altSpellings[i].search(regex) !== -1) {
@@ -144,7 +142,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
           });
           setData(filteredData);
         } else {
-          console.log("not founded in any cache making a request");
+          
           let res = await fetch(`https://restcountries.com/v3.1/name/${value}`);
           res = await res.json();
           setData(res);
