@@ -26,7 +26,7 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       }
       let value =
         (input[0] === " " && input[1] !== " ") ||
-          (input[0] === " " && input[1] !== undefined)
+        (input[0] === " " && input[1] !== undefined)
           ? " " + input.trim()
           : input.trim();
       if (value === " ") {
@@ -155,7 +155,15 @@ const Search = ({ setData, stateOfData, setStateOfData }) => {
       setSearchValue({ value: value, region: region });
     }
     handleInputChange();
-  }, [input, region, searchValue.region, searchValue.value, setData, setStateOfData, stateOfData]);
+  }, [
+    input,
+    region,
+    searchValue.region,
+    searchValue.value,
+    setData,
+    setStateOfData,
+    stateOfData,
+  ]);
   const handleKeyDown = (index) => (e) => {
     switch (e.key) {
       case " ":

@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 16px;
 }
 
@@ -23,9 +23,7 @@ header {
   -webkit-box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
   -moz-box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
   box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
-
 }
-
 
 .container {
   width: min(90vw, 1400px);
@@ -89,7 +87,7 @@ svg {
 }
 
 .search svg {
-  fill: var(--Dark-Gray)
+  fill: var(--Dark-Gray);
 }
 
 .search input {
@@ -134,7 +132,6 @@ svg {
   -webkit-box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
   -moz-box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
   box-shadow: 0px 0px 5px 1px var(--box-shadow-color);
-
 }
 
 .dropdown.droped button {
@@ -166,13 +163,13 @@ svg {
 .dropdown ul li:focus,
 .dropdown ul li:hover {
   background-color: #f4f4f4;
-  outline-color: var(--Dark-Gray)
+  outline-color: var(--Dark-Gray);
 }
 
 .dropdown ul li {
   padding-left: 20px;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   cursor: pointer;
   transition: background-color 150ms;
 }
@@ -190,10 +187,9 @@ svg {
   flex-wrap: wrap;
 }
 
-@media (max-width:48.125rem) {
-
+@media (max-width: 48.125rem) {
   .dropdown button {
-    width: 50vw
+    width: 50vw;
   }
 
   .flex-box {
@@ -228,12 +224,12 @@ svg {
 }
 
 .country-info {
-  padding-left: 16px
+  padding-left: 16px;
 }
 
 .country-info p {
-  margin-top: .1em;
-  margin-bottom: .1em;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
 }
 
 .flex-box img {
@@ -248,13 +244,13 @@ svg {
   margin-bottom: 4rem;
 }
 
-.country>a {
+.country > a {
   text-decoration: none;
   color: inherit;
   display: flex;
   align-items: center;
   width: 15ch;
-  padding: .5em;
+  padding: 0.5em;
   justify-content: center;
   border: none;
   background-color: transparent;
@@ -277,7 +273,7 @@ svg {
   width: 100%;
 }
 
-.country-display>div:last-of-type {
+.country-display > div:last-of-type {
   width: 45%;
 }
 
@@ -289,7 +285,6 @@ svg {
 .img-container {
   width: 45%;
 }
-
 
 /* Dark theme*/
 
@@ -314,11 +309,11 @@ svg {
 }
 
 .dark .search svg {
-  fill: var(--White)
+  fill: var(--White);
 }
 
 .dark svg {
-  fill: var(--White)
+  fill: var(--White);
 }
 
 .dark .country-box {

@@ -38,37 +38,37 @@ const Main = ({ data, setData, stateOfData, setStateOfData, setCurrent }) => {
       <div className="flex-box">
         {data && data.status !== 404
           ? data.map((e) => (
-            <Link
-              to={`/${e.name.common}`}
-              className="country-box"
-              key={e.name.common}
-              onClick={() => {
-                setCurrent(e);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
+              <Link
+                to={`/${e.name.common}`}
+                className="country-box"
+                key={e.name.common}
+                onClick={() => {
                   setCurrent(e);
-                }
-              }}
-            >
-              <img src={e.flags.png} alt={e.name.common + "Flag"} />
-              <div className="country-info">
-                <h3>{e.name.common}</h3>
-                <p>
-                  <b>Population:</b> {format(e.population)}
-                </p>
-                <p>
-                  <b>Region:</b> {e.region}
-                </p>
-                <p>
-                  <b>Capital:</b> {e.capital && e.capital[0]}
-                </p>
-              </div>
-            </Link>
-          ))
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setCurrent(e);
+                  }
+                }}
+              >
+                <img src={e.flags.png} alt={e.name.common + "Flag"} />
+                <div className="country-info">
+                  <h3>{e.name.common}</h3>
+                  <p>
+                    <b>Population:</b> {format(e.population)}
+                  </p>
+                  <p>
+                    <b>Region:</b> {e.region}
+                  </p>
+                  <p>
+                    <b>Capital:</b> {e.capital && e.capital[0]}
+                  </p>
+                </div>
+              </Link>
+            ))
           : data.status === 404 && (
-            <div className="not-found">404 No Such country Name</div>
-          )}
+              <div className="not-found">404 No Such country Name</div>
+            )}
       </div>
     </div>
   );
